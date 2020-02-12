@@ -8,4 +8,8 @@ public class ImagerContext {
     void setBufferedImage(BufferedImage bufferedImage) {
         this.bufferedImage = bufferedImage;
     }
+
+    public BufferedImage buildImage() {
+        return null;
+    }
 }
