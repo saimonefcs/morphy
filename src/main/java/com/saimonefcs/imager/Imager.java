@@ -11,7 +11,7 @@ import java.nio.file.Files;
 
 public class Imager {
 
-    public static ImagerContext fromJpeg(File file) {
+    public static ImagerContext fromFile(File file) {
 
         BufferedImage bufferedImage;
         try {
@@ -27,4 +27,22 @@ public class Imager {
         return imagerContext;
     }
 
+    public static boolean compareImages(BufferedImage first, BufferedImage second) {
+        if (first == null || second == null) {
+            return false;
+        } else if (first.getHeight() != second.getHeight()) {
+            return false;
+        } else if (first.getWidth() != second.getWidth()) {
+            return false;
+        }
+
+        for (int i = 0; i < second.getWidth(); i++) {
+            for (int j = 0; j < second.getHeight(); j++) {
+                if (first.getRGB(i, j) != second.getRGB(i, j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

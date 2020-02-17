@@ -1,5 +1,6 @@
 package com.saimonefcs.imager;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class ImagerTestUtils {
