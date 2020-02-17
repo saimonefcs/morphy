@@ -21,9 +21,9 @@ public class ImagerTest {
 
     @Test
     public void compareImagesReturnsTrueIfImagesAreIdentical() throws IOException {
-        File file1 = new File(getClass().getClassLoader().getResource("in/jpg.jpg").getFile());
+        File file1 = TestUtils.load("in/png.png");
+        File file2 = TestUtils.load("in/png.png");
         BufferedImage bufferedImage1 = ImageIO.read(file1);
-        File file2 = new File(getClass().getClassLoader().getResource("in/jpg.jpg").getFile());
         BufferedImage bufferedImage2 = ImageIO.read(file2);
 
         assertTrue(Imager.compareImages(bufferedImage1, bufferedImage2));
@@ -31,9 +31,9 @@ public class ImagerTest {
 
     @Test
     public void compareImagesReturnsFalseIfImagesAreNotIdentical() throws IOException {
-        File file1 = new File(getClass().getClassLoader().getResource("in/jpg.jpg").getFile());
+        File file1 = TestUtils.load("in/png.png");
+        File file2 = TestUtils.load("in/gif.gif");
         BufferedImage bufferedImage1 = ImageIO.read(file1);
-        File file2 = new File(getClass().getClassLoader().getResource("in/gif.gif").getFile());
         BufferedImage bufferedImage2 = ImageIO.read(file2);
 
         assertFalse(Imager.compareImages(bufferedImage1, bufferedImage2));
@@ -41,7 +41,7 @@ public class ImagerTest {
 
     @Test
     public void compareImagesReturnsFalseIfTheFirstImagesIsNull() throws IOException {
-        File file = new File(getClass().getClassLoader().getResource("in/jpg.jpg").getFile());
+        File file = TestUtils.load("in/png.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         assertFalse(Imager.compareImages(null, bufferedImage));
@@ -49,7 +49,7 @@ public class ImagerTest {
 
     @Test
     public void compareImagesReturnsFalseIfTheSecondImagesIsNull() throws IOException {
-        File file = new File(getClass().getClassLoader().getResource("in/jpg.jpg").getFile());
+        File file = TestUtils.load("in/png.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         assertFalse(Imager.compareImages(bufferedImage, null));
@@ -62,9 +62,7 @@ public class ImagerTest {
 
     @Test
     public void buildImageReturnsABufferedImage() {
-        File file = new File(
-                getClass().getClassLoader().getResource("in/jpg.jpg").getFile()
-        );
+        File file = TestUtils.load("in/png.png");
 
         BufferedImage actual = Imager.fromFile(file).buildImage();
 

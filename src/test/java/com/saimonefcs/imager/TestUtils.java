@@ -1,12 +1,11 @@
 package com.saimonefcs.imager;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class ImagerTestUtils {
+public class TestUtils {
 
     public static File load(String filePath) {
-        ClassLoader classLoader = ImagerTestUtils.class.getClassLoader();
+        ClassLoader classLoader = TestUtils.class.getClassLoader();
         File file = new File(classLoader.getResource(filePath).getFile());
         return file;
     }
