@@ -14,9 +14,7 @@ public class ImagerTest {
 
     @Test
     public void fromFileThrowsExceptionIfFileDoesNotExist() {
-        assertThrows(ImageNotFoundException.class, () -> {
-            Imager.fromFile(new File("notFoundJpeg.jpg"));
-        });
+        assertThrows(ImageNotFoundException.class, () -> Imager.fromFile(new File("notFoundJpeg.jpg")));
     }
 
     @Test
@@ -56,7 +54,7 @@ public class ImagerTest {
     }
 
     @Test
-    public void compareImagesReturnsFalseIfBothImagesAreNull() throws IOException {
+    public void compareImagesReturnsFalseIfBothImagesAreNull() {
         assertFalse(Imager.compareImages(null, null));
     }
 
@@ -70,12 +68,34 @@ public class ImagerTest {
     }
 
     @Test
-    public void rotateCalled1TimeClockwiseReturnsTheExpectedImage() throws IOException {
-        File file = new File(getClass().getClassLoader().getResource("in/png.png").getFile());
+    public void rotateClockwiseReturnsTheExpectedImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
 
         BufferedImage actual = Imager.fromFile(file).rotate(Rotate.CLOCKWISE).buildImage();
 
-        File expectedFile = new File(getClass().getClassLoader().getResource("expected/png-rotated-clock.png").getFile());
+        File expectedFile = TestUtils.load("expected/png-rotated-clock.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void rotateAnticlockwiseReturnsTheExpectedImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).rotate(Rotate.ANTI_CLOCKWISE).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-rotated-anticlock.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void rotateUpsideDownReturnsTheExpectedImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).rotate(Rotate.UPSIDE_DOWN).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-rotated-upsidedown.png");
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }
