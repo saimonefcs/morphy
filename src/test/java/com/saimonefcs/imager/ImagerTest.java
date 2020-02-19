@@ -73,7 +73,7 @@ public class ImagerTest {
 
         BufferedImage actual = Imager.fromFile(file).rotate(Rotate.CLOCKWISE).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-rotated-clock.png");
+        File expectedFile = TestUtils.load("expected/png-rotated-png-rotated-clock.png");
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }

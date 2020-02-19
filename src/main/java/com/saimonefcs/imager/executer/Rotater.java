@@ -13,16 +13,19 @@ public class Rotater {
         int width = bufferedImage.getWidth();
         int height = bufferedImage.getHeight();
 
-        BufferedImage newBufferedImage = new BufferedImage(width, height, bufferedImage.getType());
 
+        BufferedImage newBufferedImage = null;
         switch (rotate) {
             case CLOCKWISE:
+                newBufferedImage = new BufferedImage(height, width, bufferedImage.getType());
                 rotateClockwise(bufferedImage, width, height, newBufferedImage);
                 break;
             case ANTI_CLOCKWISE:
+                newBufferedImage = new BufferedImage(height, width, bufferedImage.getType());
                 rotateAnticlockwise(bufferedImage, width, height, newBufferedImage);
                 break;
             case UPSIDE_DOWN:
+                newBufferedImage = new BufferedImage(width, height, bufferedImage.getType());
                 rotateUpsideDown(bufferedImage, width, height, newBufferedImage);
                 break;
         }
