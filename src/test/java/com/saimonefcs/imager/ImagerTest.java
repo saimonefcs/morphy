@@ -154,4 +154,26 @@ public class ImagerTest {
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }
+
+    @Test
+    public void flipHorizontalReturnsAFlippedImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).flip(Flip.HORIZONTAL_AXIS).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-flipped-horizontal.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void flipVerticalReturnsAFlippedImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).flip(Flip.VERTICAL_AXIS).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-flipped-horizontal.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
 }

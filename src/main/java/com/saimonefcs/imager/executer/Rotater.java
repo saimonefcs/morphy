@@ -29,14 +29,6 @@ public class Rotater {
                 rotateUpsideDown(bufferedImage, width, height, newBufferedImage);
                 break;
         }
-        /*
-        clock 9x9
-        00 80
-        10 81
-        01 80
-        11 88
-        88 00
-         */
 
         return newBufferedImage;
     }
