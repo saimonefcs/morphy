@@ -99,4 +99,28 @@ public class ImagerTest {
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }
+
+    @Test
+    public void rotateNullReturnsTheSame() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).rotate(null).buildImage();
+
+        File expectedFile = TestUtils.load("in/png.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void blurReturns() throws IOException {
+        File file = TestUtils.load("in/bigFile.png");
+
+        BufferedImage actual = Imager.fromFile(file).blur().buildImage();
+
+        ImageIO.write(actual, "png", File.createTempFile("sbiri", ".png"));
+
+        File expectedFile = TestUtils.load("in/png.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
 }
