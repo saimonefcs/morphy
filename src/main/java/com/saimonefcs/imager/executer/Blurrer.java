@@ -10,11 +10,14 @@ import java.util.List;
 
 public class Blurrer {
 
-    public static BufferedImage blur(final BufferedImage imageIn, Blur blur) {
-        int[][] matrix = ImageUtils.imageToMatrix(imageIn);
-        int[] imageOutPixels = blur(matrix, imageIn.getHeight(), imageIn.getWidth(), blur.getBrushSize());
+    public static BufferedImage blur(BufferedImage bufferedImage, Blur blur) {
+        if (blur == null) {
+            return bufferedImage;
+        }
+        int[][] matrix = ImageUtils.imageToMatrix(bufferedImage);
+        int[] imageOutPixels = blur(matrix, bufferedImage.getHeight(), bufferedImage.getWidth(), blur.getBrushSize());
 
-        return ImageUtils.fromArrayToImage(imageIn, imageOutPixels);
+        return ImageUtils.fromArrayToImage(bufferedImage, imageOutPixels);
     }
 
     private static int[] blur(int[][] imageInPixels, int height, int width, int brushSize) {

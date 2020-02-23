@@ -112,14 +112,45 @@ public class ImagerTest {
     }
 
     @Test
-    public void blurReturns() throws IOException {
-        File file = TestUtils.load("in/bigFile.png");
+    public void blurWithoutPassingAnythingReturnsAMediumBlurredImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
 
         BufferedImage actual = Imager.fromFile(file).blur().buildImage();
 
-        ImageIO.write(actual, "png", File.createTempFile("sbiri", ".png"));
+        File expectedFile = TestUtils.load("expected/png-blurred-medium.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
 
-        File expectedFile = TestUtils.load("in/png.png");
+    @Test
+    public void blurLightlyReturnsALightBlurredImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).blur(Blur.LIGHT).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-blurred-light.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void blurMediumReturnsAMediumBlurredImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).blur(Blur.MEDIUM).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-blurred-medium.png");
+        BufferedImage expected = ImageIO.read(expectedFile);
+        assertTrue(Imager.compareImages(expected, actual));
+    }
+
+    @Test
+    public void blurHeavilyReturnsAnHeavyBlurredImage() throws IOException {
+        File file = TestUtils.load("in/png.png");
+
+        BufferedImage actual = Imager.fromFile(file).blur(Blur.HEAVY).buildImage();
+
+        File expectedFile = TestUtils.load("expected/png-blurred-heavy.png");
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }

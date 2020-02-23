@@ -29,7 +29,7 @@ public class ImagerContext {
         return blur(Blur.MEDIUM);
     }
 
-    private ImagerContext blur(Blur blur) {
+    public ImagerContext blur(Blur blur) {
         this.blur = blur;
         return this;
     }
