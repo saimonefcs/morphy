@@ -42,7 +42,7 @@ public class Rotater {
     }
 
     private static void rotateClockwise(BufferedImage bufferedImage, int width, int height, BufferedImage newBufferedImage) {
-        int newX = width - 1;
+        int newX = height - 1;
         int newY;
 
         for (int y = 0; y < height; y++) {
@@ -72,7 +72,7 @@ public class Rotater {
     private static void rotateUpsideDown(BufferedImage bufferedImage, int width, int height, BufferedImage newBufferedImage) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                newBufferedImage.setRGB((width - 1) - x, (width - 1) - y, bufferedImage.getRGB(x, y));
+                newBufferedImage.setRGB((width - 1) - x, (height - 1) - y, bufferedImage.getRGB(x, y));
             }
         }
     }
