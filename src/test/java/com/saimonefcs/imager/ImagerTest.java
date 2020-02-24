@@ -172,7 +172,7 @@ public class ImagerTest {
 
         BufferedImage actual = Imager.fromFile(file).flip(Flip.VERTICAL_AXIS).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-flipped-horizontal.png");
+        File expectedFile = TestUtils.load("expected/png-flipped-vertical.png");
         BufferedImage expected = ImageIO.read(expectedFile);
         assertTrue(Imager.compareImages(expected, actual));
     }

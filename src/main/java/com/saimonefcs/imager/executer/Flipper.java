@@ -43,15 +43,15 @@ public class Flipper {
 
     private static void flipVertical(BufferedImage bufferedImage, int width, int height, BufferedImage newBufferedImage) {
         int newX;
-        int newY = height - 1;
+        int newY = 0;
 
         for (int y = 0; y < height; y++) {
-            newX = 0;
+            newX = width - 1;
             for (int x = 0; x < width; x++) {
                 newBufferedImage.setRGB(newX, newY, bufferedImage.getRGB(x, y));
-                newX++;
+                newX--;
             }
-            newY--;
+            newY++;
         }
     }
 }
