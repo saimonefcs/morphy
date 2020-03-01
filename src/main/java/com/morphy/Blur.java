@@ -1,4 +1,4 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
 public enum Blur {
     LIGHT(1),

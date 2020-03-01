@@ -1,6 +1,6 @@
-package com.saimonefcs.imager.executer;
+package com.morphy.executer;
 
-import com.saimonefcs.imager.Flip;
+import com.morphy.Flip;
 
 import java.awt.image.BufferedImage;
 

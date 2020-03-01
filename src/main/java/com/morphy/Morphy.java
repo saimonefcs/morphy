@@ -1,6 +1,6 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
-import com.saimonefcs.imager.exception.ImageNotFoundException;
+import com.morphy.exception.ImageNotFoundException;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 
 public class Morphy {
 
-    public static ImagerContext fromFile(File file) {
+    public static MorphyContext fromFile(File file) {
 
         BufferedImage bufferedImage;
         try {
@@ -21,9 +21,9 @@ public class Morphy {
         }
 
 
-        ImagerContext imagerContext = new ImagerContext();
-        imagerContext.setBufferedImage(bufferedImage);
-        return imagerContext;
+        MorphyContext morphyContext = new MorphyContext();
+        morphyContext.setBufferedImage(bufferedImage);
+        return morphyContext;
     }
 
     public static boolean compareImages(BufferedImage first, BufferedImage second) {

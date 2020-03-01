@@ -1,4 +1,4 @@
-package com.saimonefcs.imager.util;
+package com.morphy.util;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

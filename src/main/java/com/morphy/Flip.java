@@ -1,4 +1,4 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
 public enum Flip {
     VERTICAL_AXIS,

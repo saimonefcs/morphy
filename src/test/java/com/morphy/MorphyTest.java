@@ -1,6 +1,6 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
-import com.saimonefcs.imager.exception.ImageNotFoundException;
+import com.morphy.exception.ImageNotFoundException;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;

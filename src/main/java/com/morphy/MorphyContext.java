@@ -1,12 +1,12 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
-import com.saimonefcs.imager.executer.Blurrer;
-import com.saimonefcs.imager.executer.Flipper;
-import com.saimonefcs.imager.executer.Rotater;
+import com.morphy.executer.Rotater;
+import com.morphy.executer.Blurrer;
+import com.morphy.executer.Flipper;
 
 import java.awt.image.BufferedImage;
 
-public class ImagerContext {
+public class MorphyContext {
     private BufferedImage bufferedImage;
     private Rotate rotate;
     private Blur blur;
@@ -23,21 +23,21 @@ public class ImagerContext {
         return bufferedImage;
     }
 
-    public ImagerContext rotate(Rotate rotate) {
+    public MorphyContext rotate(Rotate rotate) {
         this.rotate = rotate;
         return this;
     }
 
-    public ImagerContext blur() {
+    public MorphyContext blur() {
         return blur(Blur.MEDIUM);
     }
 
-    public ImagerContext blur(Blur blur) {
+    public MorphyContext blur(Blur blur) {
         this.blur = blur;
         return this;
     }
 
-    public ImagerContext flip(Flip flip) {
+    public MorphyContext flip(Flip flip) {
         this.flip = flip;
         return this;
     }

@@ -1,4 +1,4 @@
-package com.saimonefcs.imager.exception;
+package com.morphy.exception;
 
 public class ImageNotFoundException extends BaseException {
 }

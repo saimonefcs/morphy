@@ -1,4 +1,4 @@
-package com.saimonefcs.imager;
+package com.morphy;
 
 import java.io.File;
 

@@ -1,6 +1,6 @@
-package com.saimonefcs.imager.executer;
+package com.morphy.executer;
 
-import com.saimonefcs.imager.Rotate;
+import com.morphy.Rotate;
 
 import java.awt.image.BufferedImage;
 

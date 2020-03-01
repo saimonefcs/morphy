@@ -1,7 +1,7 @@
-package com.saimonefcs.imager.executer;
+package com.morphy.executer;
 
-import com.saimonefcs.imager.Blur;
-import com.saimonefcs.imager.util.ImageUtils;
+import com.morphy.Blur;
+import com.morphy.util.ImageUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
