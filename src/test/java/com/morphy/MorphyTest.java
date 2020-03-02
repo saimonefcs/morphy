@@ -18,9 +18,14 @@ public class MorphyTest {
     }
 
     @Test
+    public void fromImageThrowsExceptionIfImageIsNull() {
+        assertThrows(ImageNotFoundException.class, () -> Morphy.fromImage(null));
+    }
+
+    @Test
     public void compareImagesReturnsTrueIfImagesAreIdentical() throws IOException {
-        File file1 = TestUtils.load("in/png.png");
-        File file2 = TestUtils.load("in/png.png");
+        File file1 = TestUtils.loadFile("in/png.png");
+        File file2 = TestUtils.loadFile("in/png.png");
         BufferedImage bufferedImage1 = ImageIO.read(file1);
         BufferedImage bufferedImage2 = ImageIO.read(file2);
 
@@ -29,8 +34,8 @@ public class MorphyTest {
 
     @Test
     public void compareImagesReturnsFalseIfImagesAreNotIdentical() throws IOException {
-        File file1 = TestUtils.load("in/png.png");
-        File file2 = TestUtils.load("in/gif.gif");
+        File file1 = TestUtils.loadFile("in/png.png");
+        File file2 = TestUtils.loadFile("in/gif.gif");
         BufferedImage bufferedImage1 = ImageIO.read(file1);
         BufferedImage bufferedImage2 = ImageIO.read(file2);
 
@@ -39,7 +44,7 @@ public class MorphyTest {
 
     @Test
     public void compareImagesReturnsFalseIfTheFirstImagesIsNull() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         assertFalse(Morphy.compareImages(null, bufferedImage));
@@ -47,7 +52,7 @@ public class MorphyTest {
 
     @Test
     public void compareImagesReturnsFalseIfTheSecondImagesIsNull() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
         BufferedImage bufferedImage = ImageIO.read(file);
 
         assertFalse(Morphy.compareImages(bufferedImage, null));
@@ -60,7 +65,7 @@ public class MorphyTest {
 
     @Test
     public void buildImageReturnsABufferedImage() {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
 
         BufferedImage actual = Morphy.fromFile(file).buildImage();
 
@@ -68,112 +73,67 @@ public class MorphyTest {
     }
 
     @Test
-    public void rotateClockwiseReturnsTheExpectedImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).rotate(Rotate.CLOCKWISE).buildImage();
-
-        File expectedFile = TestUtils.load("expected/png-rotated-clock.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
-    }
-
-    @Test
-    public void rotateAnticlockwiseReturnsTheExpectedImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).rotate(Rotate.ANTI_CLOCKWISE).buildImage();
-
-        File expectedFile = TestUtils.load("expected/png-rotated-anticlock.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
-    }
-
-    @Test
-    public void rotateUpsideDownReturnsTheExpectedImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).rotate(Rotate.UPSIDE_DOWN).buildImage();
-
-        File expectedFile = TestUtils.load("expected/png-rotated-upsidedown.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
-    }
-
-    @Test
     public void rotateNullReturnsTheSame() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
 
-        BufferedImage actual = Morphy.fromFile(file).rotate(null).buildImage();
+        BufferedImage actual = Morphy.fromImage(bufferedImage).rotate(null).buildImage();
 
-        File expectedFile = TestUtils.load("in/png.png");
+        File expectedFile = TestUtils.loadFile("in/png.png");
         BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 
     @Test
     public void blurWithoutPassingAnythingReturnsAMediumBlurredImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
 
         BufferedImage actual = Morphy.fromFile(file).blur().buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-blurred-medium.png");
+        File expectedFile = TestUtils.loadFile("expected/png-blurred-medium.png");
         BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 
     @Test
     public void blurLightlyReturnsALightBlurredImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
 
         BufferedImage actual = Morphy.fromFile(file).blur(Blur.LIGHT).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-blurred-light.png");
+        File expectedFile = TestUtils.loadFile("expected/png-blurred-light.png");
         BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 
     @Test
     public void blurMediumReturnsAMediumBlurredImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
 
         BufferedImage actual = Morphy.fromFile(file).blur(Blur.MEDIUM).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-blurred-medium.png");
+        File expectedFile = TestUtils.loadFile("expected/png-blurred-medium.png");
         BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 
     @Test
     public void blurHeavilyReturnsAnHeavyBlurredImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
+        File file = TestUtils.loadFile("in/png.png");
 
         BufferedImage actual = Morphy.fromFile(file).blur(Blur.HEAVY).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-blurred-heavy.png");
+        File expectedFile = TestUtils.loadFile("expected/png-blurred-heavy.png");
         BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 
     @Test
-    public void flipHorizontalReturnsAFlippedImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
+    public void flipPassingNullReturnsTheSameImage() {
+        BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
 
-        BufferedImage actual = Morphy.fromFile(file).flip(Flip.HORIZONTAL_AXIS).buildImage();
+        BufferedImage actual = Morphy.fromImage(bufferedImage).flip(null).buildImage();
 
-        File expectedFile = TestUtils.load("expected/png-flipped-horizontal.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
-    }
-
-    @Test
-    public void flipVerticalReturnsAFlippedImage() throws IOException {
-        File file = TestUtils.load("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).flip(Flip.VERTICAL_AXIS).buildImage();
-
-        File expectedFile = TestUtils.load("expected/png-flipped-vertical.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(Morphy.compareImages(expected, actual));
+        BufferedImage expected = TestUtils.loadImage("in/png.png");
+        assertTrue(TestUtils.compareImages(expected, actual));
     }
 }
