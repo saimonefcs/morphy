@@ -1,6 +1,6 @@
 package com.morphy.executer;
 
-import com.morphy.Rotate;
+import com.morphy.option.Rotate;
 
 import java.awt.image.BufferedImage;
 

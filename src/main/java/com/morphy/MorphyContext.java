@@ -3,6 +3,9 @@ package com.morphy;
 import com.morphy.executer.Rotater;
 import com.morphy.executer.Blurrer;
 import com.morphy.executer.Flipper;
+import com.morphy.option.Blur;
+import com.morphy.option.Flip;
+import com.morphy.option.Rotate;
 
 import java.awt.image.BufferedImage;
 

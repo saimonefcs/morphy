@@ -1,7 +1,7 @@
 package com.morphy.executer;
 
 import com.morphy.Morphy;
-import com.morphy.Rotate;
+import com.morphy.option.Rotate;
 import com.morphy.TestUtils;
 import org.junit.jupiter.api.Test;
 

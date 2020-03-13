@@ -1,6 +1,6 @@
 package com.morphy.executer;
 
-import com.morphy.Blur;
+import com.morphy.option.Blur;
 import com.morphy.util.ImageUtils;
 
 import java.awt.*;

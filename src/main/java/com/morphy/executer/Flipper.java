@@ -1,6 +1,6 @@
 package com.morphy.executer;
 
-import com.morphy.Flip;
+import com.morphy.option.Flip;
 
 import java.awt.image.BufferedImage;
 

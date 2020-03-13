@@ -1,6 +1,7 @@
 package com.morphy;
 
 import com.morphy.exception.ImageNotFoundException;
+import com.morphy.option.Blur;
 import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;

@@ -1,4 +1,4 @@
-package com.morphy;
+package com.morphy.option;
 
 public enum Flip {
     VERTICAL_AXIS,
