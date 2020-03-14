@@ -1,9 +1,11 @@
 package com.morphy;
 
+import com.morphy.executer.Filterer;
 import com.morphy.executer.Rotater;
 import com.morphy.executer.Blurrer;
 import com.morphy.executer.Flipper;
 import com.morphy.option.Blur;
+import com.morphy.option.Filter;
 import com.morphy.option.Flip;
 import com.morphy.option.Rotate;
 
@@ -14,6 +16,7 @@ public class MorphyContext {
     private Rotate rotate;
     private Blur blur;
     private Flip flip;
+    private Filter filter;
 
     void setBufferedImage(BufferedImage bufferedImage) {
         this.bufferedImage = bufferedImage;
@@ -27,6 +30,7 @@ public class MorphyContext {
     public BufferedImage buildImage() {
         bufferedImage = Rotater.rotate(bufferedImage, rotate);
         bufferedImage = Blurrer.blur(bufferedImage, blur);
+        bufferedImage = Filterer.filter(bufferedImage, filter);
         bufferedImage = Flipper.flip(bufferedImage, flip);
         return bufferedImage;
     }
@@ -79,6 +83,11 @@ public class MorphyContext {
      */
     public MorphyContext flip(Flip flip) {
         this.flip = flip;
+        return this;
+    }
+
+    public MorphyContext filter(Filter filter) {
+        this.filter = filter;
         return this;
     }
 }

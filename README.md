@@ -15,6 +15,8 @@ The actual manipulation is done at the end, in the build command for performance
     - Light
     - Medium
     - Heavy
+ - Filter
+    - Negative effect
  
 ## Open source and PRs
 Feel free to add and/or request new features.

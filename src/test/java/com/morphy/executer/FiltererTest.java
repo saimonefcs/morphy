@@ -1,0 +1,30 @@
+package com.morphy.executer;
+
+import com.morphy.TestUtils;
+import com.morphy.option.Filter;
+import org.junit.jupiter.api.Test;
+
+import java.awt.image.BufferedImage;
+
+public class FiltererTest {
+
+    @Test
+    public void filterPassingNullReturnsTheSameImage() {
+        BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
+
+        BufferedImage actual = Filterer.filter(bufferedImage, null);
+
+        TestUtils.compareImages(bufferedImage, actual);
+    }
+
+    @Test
+    public void filterNegativeReturnsANegativeImage() {
+        BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
+
+        BufferedImage actual = Filterer.filter(bufferedImage, Filter.NEGATIVE);
+
+        BufferedImage expected = TestUtils.loadImage("expected/png-filter-invert.png");
+
+        TestUtils.compareImages(expected, actual);
+    }
+}
