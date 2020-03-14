@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -96,39 +98,6 @@ public class MorphyTest {
     }
 
     @Test
-    public void blurLightlyReturnsALightBlurredImage() throws IOException {
-        File file = TestUtils.loadFile("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).blur(Blur.LIGHT).buildImage();
-
-        File expectedFile = TestUtils.loadFile("expected/png-blurred-light.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(TestUtils.compareImages(expected, actual));
-    }
-
-    @Test
-    public void blurMediumReturnsAMediumBlurredImage() throws IOException {
-        File file = TestUtils.loadFile("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).blur(Blur.MEDIUM).buildImage();
-
-        File expectedFile = TestUtils.loadFile("expected/png-blurred-medium.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(TestUtils.compareImages(expected, actual));
-    }
-
-    @Test
-    public void blurHeavilyReturnsAnHeavyBlurredImage() throws IOException {
-        File file = TestUtils.loadFile("in/png.png");
-
-        BufferedImage actual = Morphy.fromFile(file).blur(Blur.HEAVY).buildImage();
-
-        File expectedFile = TestUtils.loadFile("expected/png-blurred-heavy.png");
-        BufferedImage expected = ImageIO.read(expectedFile);
-        assertTrue(TestUtils.compareImages(expected, actual));
-    }
-
-    @Test
     public void flipPassingNullReturnsTheSameImage() {
         BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
 
@@ -136,5 +105,40 @@ public class MorphyTest {
 
         BufferedImage expected = TestUtils.loadImage("in/png.png");
         assertTrue(TestUtils.compareImages(expected, actual));
+    }
+
+    @Test
+    public void dd() throws IOException {
+        File original = new File("/home/saim/Pictures/original_blur.jpg");
+        File blurLight = new File("/home/saim/Pictures/light_blur.jpg");
+        File blurMedium = new File("/home/saim/Pictures/medium_blur.jpg");
+        File blurHeavy = new File("/home/saim/Pictures/heavy_blur.jpg");
+
+        List<Long> times = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            long initial = System.currentTimeMillis();
+            BufferedImage buffLight = Morphy.fromFile(original).blur(Blur.LIGHT).buildImage();
+            times.add(System.currentTimeMillis() - initial);
+
+        }
+        System.out.println(times.stream().mapToLong(i -> i).average());
+        times.clear();
+
+        for (int i = 0; i < 100; i++) {
+            long initial = System.currentTimeMillis();
+            BufferedImage buffLight = Morphy.fromFile(original).blur(Blur.MEDIUM).buildImage();
+            times.add(System.currentTimeMillis() - initial);
+
+        }
+        System.out.println(times.stream().mapToLong(i -> i).average());
+        times.clear();
+        for (int i = 0; i < 100; i++) {
+            long initial = System.currentTimeMillis();
+            BufferedImage buffLight = Morphy.fromFile(original).blur(Blur.HEAVY).buildImage();
+            times.add(System.currentTimeMillis() - initial);
+
+        }
+        System.out.println(times.stream().mapToLong(i -> i).average());
+        times.clear();
     }
 }

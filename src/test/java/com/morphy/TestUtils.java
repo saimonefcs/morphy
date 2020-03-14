@@ -7,8 +7,7 @@ public class TestUtils {
 
     public static File loadFile(String filePath) {
         ClassLoader classLoader = TestUtils.class.getClassLoader();
-        File file = new File(classLoader.getResource(filePath).getFile());
-        return file;
+        return new File(classLoader.getResource(filePath).getFile());
     }
 
     public static BufferedImage loadImage(String filePath) {

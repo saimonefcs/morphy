@@ -30,5 +30,17 @@ Morphy.compareImages(firstImage, secondImage)
 ## Unit tests
 Done by comparing image expectations.
 
-## Performance
-No data yet
+## Performances
+All the times are taken on an idle quad-core 1.10GHz laptop. The operations are pixel-number dependent, the more there are the longer it will take with a linear curve O(n).
+
+###Blur
+Taking in consideration an image 1280x720px and 100 iterations the average results are:
+- LIGHT: 0.416s
+- MEDIUM: 7.764s
+- HEAVY: 26.219s
+
+Taking in consideration an image 1920x1080px and 100 iterations the average results are:
+- LIGHT: 0.850s
+- MEDIUM: 11.641s
+- HEAVY: 45.583s
+

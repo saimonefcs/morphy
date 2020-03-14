@@ -8,6 +8,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * Image manipulation class.
+ * Open-source, fluent, easy to use library.
+ *
+ * @author andrea morandotti
+ */
 public class Morphy {
 
     /**
