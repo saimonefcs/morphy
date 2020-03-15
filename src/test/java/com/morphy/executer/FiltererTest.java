@@ -27,4 +27,15 @@ public class FiltererTest {
 
         TestUtils.compareImages(expected, actual);
     }
+
+    @Test
+    public void filterGreyscaleReturnsAnImageOfGrayscale() {
+        BufferedImage bufferedImage = TestUtils.loadImage("in/png.png");
+
+        BufferedImage actual = Filterer.filter(bufferedImage, Filter.GREYSCALE);
+
+        BufferedImage expected = TestUtils.loadImage("expected/png-filter-greyscale.png");
+
+        TestUtils.compareImages(expected, actual);
+    }
 }

@@ -17,6 +17,7 @@ The actual manipulation is done at the end, in the build command for performance
     - Heavy
  - Filter
     - Negative effect
+    - Greyscale
  
 ## Open source and PRs
 Feel free to add and/or request new features.
