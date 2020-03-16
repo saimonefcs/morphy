@@ -21,8 +21,8 @@ The actual manipulation is done at the end, in the build command for performance
     - Black & White
  
 ## Open source and PRs
-Feel free to add and/or request new features.
-Unit tests are mandatory
+Feel free to add and/or request new features.<br>
+Unit tests in PRs are mandatory.
 
 ## Usages
 ```
