@@ -20,6 +20,18 @@ public class Filterer {
                 newBufferedImage = negative(bufferedImage, newBufferedImage);
             case GREYSCALE:
                 newBufferedImage = greyscale(bufferedImage, newBufferedImage);
+            case BLACK_N_WHITE:
+                newBufferedImage = blackNWhite(bufferedImage, newBufferedImage);
+        }
+        return newBufferedImage;
+    }
+
+    private static BufferedImage negative(BufferedImage bufferedImage, BufferedImage newBufferedImage) {
+
+        for (int y = 0; y < bufferedImage.getHeight(); y++) {
+            for (int x = 0; x < bufferedImage.getWidth(); x++) {
+                newBufferedImage.setRGB(x, y, invertColor(new Color(bufferedImage.getRGB(x, y))));
+            }
         }
         return newBufferedImage;
     }
@@ -34,11 +46,11 @@ public class Filterer {
         return newBufferedImage;
     }
 
-    private static BufferedImage negative(BufferedImage bufferedImage, BufferedImage newBufferedImage) {
+    private static BufferedImage blackNWhite(BufferedImage bufferedImage, BufferedImage newBufferedImage) {
 
         for (int y = 0; y < bufferedImage.getHeight(); y++) {
             for (int x = 0; x < bufferedImage.getWidth(); x++) {
-                newBufferedImage.setRGB(x, y, invertColor(new Color(bufferedImage.getRGB(x, y))));
+                newBufferedImage.setRGB(x, y, toBlackOrWhite(new Color(bufferedImage.getRGB(x, y))));
             }
         }
         return newBufferedImage;
@@ -61,6 +73,21 @@ public class Filterer {
 
         int grey = (red + green + blue) / 3;
         Color resultingColor = new Color(grey, grey, grey);
+
+        return resultingColor.getRGB();
+    }
+
+    private static int toBlackOrWhite(Color color) {
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
+
+        Color resultingColor;
+        if ((red + green + blue) / 3 <= 124) {
+            resultingColor = new Color(0, 0, 0);
+        } else {
+            resultingColor = new Color(255, 255, 255);
+        }
 
         return resultingColor.getRGB();
     }

@@ -11,6 +11,11 @@ public enum Filter {
      */
     GREYSCALE,
     /**
+     * The image is transformed into an image made of only white and black pixels.
+     * To be not confused with grayscale.
+     */
+    BLACK_N_WHITE,
+    /**
      * The image is transformed with negative colors.
      */
     NEGATIVE

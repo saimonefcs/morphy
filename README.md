@@ -18,6 +18,7 @@ The actual manipulation is done at the end, in the build command for performance
  - Filter
     - Negative effect
     - Greyscale
+    - Black & White
  
 ## Open source and PRs
 Feel free to add and/or request new features.
