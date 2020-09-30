@@ -3,7 +3,7 @@
 Meant to be easy to use with a fluent api.<br>
 The actual manipulation is done at the end, in the build command for performance reasons. 
 
-##Features
+## Features
  - Rotate
     - Clockwise
     - Anti-clockwise
@@ -37,7 +37,7 @@ Done by comparing image expectations.
 ## Performances
 All the times are taken on an idle quad-core 1.10GHz laptop. The operations are pixel-number dependent, the more there are the longer it will take with a linear curve O(n).
 
-###Blur
+### Blur
 Taking in consideration an image 1280x720px and 100 iterations the average results are:
 - LIGHT: 0.416s
 - MEDIUM: 7.764s
